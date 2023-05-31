@@ -6,6 +6,7 @@ import { DetailesPageComponent } from './components/detailes-page/detailes-page.
 import { CurrencyExchangerRoutingModule } from './currency-exchanger-routing.module';
 import { PopularCurrenciesComponent } from './components/popular-currencies/popular-currencies.component';
 import { PanelComponent } from './components/panel/panel.component';
+import { ChartComponent } from './components/chart/chart.component';
 
 
 
@@ -14,7 +15,8 @@ import { PanelComponent } from './components/panel/panel.component';
     HomePageComponent,
     DetailesPageComponent,
     PanelComponent,
-    PopularCurrenciesComponent
+    PopularCurrenciesComponent,
+    ChartComponent
   ],
   imports: [
     CommonModule,
