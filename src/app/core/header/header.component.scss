@@ -1,0 +1,29 @@
+@import "/src/styles/abstract/_variables";
+.header{
+
+  margin: 0.1rem 1rem;
+  font-size: 1.6rem;
+  border-radius: 5px;
+  background-color: $color-dark-blue;
+  padding: 1rem 2rem;
+  color: $color-light-grey;
+
+  &__menu{
+    gap: 1rem;
+  }
+  &-item {
+    border: 1px solid $color-light-grey;
+    padding: 0.6rem;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transform: all 0.3s;
+
+    &:hover{
+      transform: translateY(-2px);
+      background-color: $color-light-grey ;
+      color:$color-dark-blue ;
+    }
+
+  }
+}
