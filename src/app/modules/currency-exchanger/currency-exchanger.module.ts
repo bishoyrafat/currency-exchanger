@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { DetailesPageComponent } from './components/detailes-page/detailes-page.component';
 import { CurrencyExchangerRoutingModule } from './currency-exchanger-routing.module';
-import { PanelComponent } from './components/panel/panel.component';
 import { PopularCurrenciesComponent } from './components/popular-currencies/popular-currencies.component';
+import { PanelComponent } from './components/panel/panel.component';
 
 
 
