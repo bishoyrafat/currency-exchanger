@@ -1,0 +1,70 @@
+@import "/src/styles/abstract/_variables";
+label {
+  display: block;
+}
+select {
+  width: 25rem;
+  height: 3rem;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+}
+input {
+  width: 25rem;
+  height: 3rem;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+}
+.panel {
+  font-size: 1.6rem;
+  margin: 2rem 4rem;
+  border: 3px solid $color-dark-blue;
+  border-radius: 5px;
+  padding: 2rem;
+  &-image {
+    width: 20%;
+    height: 73%;
+    transform: translate(89px, 20px);
+    cursor: pointer;
+  }
+  &--button {
+    margin-top: 1rem;
+    padding: 0.9rem 0;
+    border-radius: 5px;
+    background-color: $color-dark-orange;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: $color-light-orange;
+    }
+  }
+
+  &__detailes {
+    & .button--secondary {
+      margin-top: 1rem;
+      cursor: pointer;
+      background-color: $color-dark-blue;
+      color: $color-light-grey;
+      padding: 0.9rem 0;
+      border-radius: 5px;
+
+      &:hover{
+        background-color:$color-light-grey;
+        color:  $color-dark-blue;
+      }
+    }
+
+    div {
+      font-size: 1.4rem;
+      border: 2px solid $color-dark-blue;
+      padding: 0.3rem 0.9rem;
+      width: fit-content;
+      border-radius: 5px;
+    }
+  }
+}
+
+.currency-title{
+  margin: 1rem;
+}
