@@ -7,6 +7,9 @@ import { CurrencyExchangerRoutingModule } from './currency-exchanger-routing.mod
 import { PopularCurrenciesComponent } from './components/popular-currencies/popular-currencies.component';
 import { PanelComponent } from './components/panel/panel.component';
 import { ChartComponent } from './components/chart/chart.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 
@@ -21,7 +24,10 @@ import { ChartComponent } from './components/chart/chart.component';
   imports: [
     CommonModule,
     CurrencyExchangerRoutingModule,
-    CoreModule
+    CoreModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FormsModule
   ]
 })
 export class CurrencyExchangerModule { }
