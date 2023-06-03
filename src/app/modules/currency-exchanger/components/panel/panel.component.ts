@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Icurruncies } from 'src/app/shared/models/currencies';
+import { PopularCurrenciesService } from 'src/app/shared/services/popular-currencies.service';
+import { SelectedCurrenyService } from 'src/app/shared/services/selected-curreny.service';
 import { CurrencyExchangerService } from '../../services/currency-exchanger.service';
 
 @Component({
@@ -21,7 +23,9 @@ export class PanelComponent implements OnInit {
   convertedToUnit!: string;
   constructor(
     private router: Router,
-    private currencyExchangerService: CurrencyExchangerService
+    private currencyExchangerService: CurrencyExchangerService,
+    private popularCurrenciesService: PopularCurrenciesService,
+    private selectedCurrenyService: SelectedCurrenyService,
   ) {}
 
   createForm() {
@@ -46,7 +50,6 @@ export class PanelComponent implements OnInit {
     this.getCurreciesDropDown();
     this.createForm();
     this.Amount?.valueChanges.subscribe((val: number) => {
-      console.log(val);
       val ? (this.disabled = false) : (this.disabled = true);
     });
   }
@@ -64,6 +67,8 @@ export class PanelComponent implements OnInit {
             name: el[0],
             value: el[1],
           });
+
+          this.popularCurrenciesService.setCurrency(this.formattedBody);
         });
       });
   }
@@ -73,7 +78,9 @@ export class PanelComponent implements OnInit {
       return el.name === this.From?.value;
     });
     this.convertedFromUnit = returnedFromValue.name;
-    return returnedFromValue.value
+    this.selectedCurrenyService.setCurrency( returnedFromValue.value * this.Amount?.value)
+
+    return returnedFromValue.value;
   }
 
   toValue() {
@@ -85,7 +92,8 @@ export class PanelComponent implements OnInit {
   }
 
   convert() {
-    this.convertedValue = (this.toValue() / this.fromValue()) * this.Amount?.value;
+    this.convertedValue =
+      (this.toValue() / this.fromValue()) * this.Amount?.value;
   }
 
   swapCurrencies() {
@@ -94,6 +102,6 @@ export class PanelComponent implements OnInit {
 
     this.From?.setValue(toControl);
     this.To?.setValue(fromControl);
-    this.convert()
+    this.convert();
   }
 }
