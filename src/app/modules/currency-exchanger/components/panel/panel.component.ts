@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Icurruncies } from 'src/app/shared/models/currencies';
 import { PopularCurrenciesService } from 'src/app/shared/services/popular-currencies.service';
 import { SelectedCurrenyService } from 'src/app/shared/services/selected-curreny.service';
+import { SetDefaultService } from 'src/app/shared/services/set-default.service';
 import { CurrencyExchangerService } from '../../services/currency-exchanger.service';
 
 @Component({
@@ -12,7 +13,9 @@ import { CurrencyExchangerService } from '../../services/currency-exchanger.serv
   styleUrls: ['./panel.component.scss'],
 })
 export class PanelComponent implements OnInit {
-  disabled: boolean = true;
+  fromDisabled: boolean = true;
+  toDisabled: boolean = true;
+  inDetailesMode: boolean = false;
   panelForm!: FormGroup;
   currenciesNames: [string, number][] = [];
   fromvalue: any;
@@ -23,9 +26,11 @@ export class PanelComponent implements OnInit {
   convertedToUnit!: string;
   constructor(
     private router: Router,
+    private activatedRoute: ActivatedRoute,
     private currencyExchangerService: CurrencyExchangerService,
     private popularCurrenciesService: PopularCurrenciesService,
     private selectedCurrenyService: SelectedCurrenyService,
+    private setDefaultService: SetDefaultService
   ) {}
 
   createForm() {
@@ -50,12 +55,39 @@ export class PanelComponent implements OnInit {
     this.getCurreciesDropDown();
     this.createForm();
     this.Amount?.valueChanges.subscribe((val: number) => {
-      val ? (this.disabled = false) : (this.disabled = true);
+      if (val) {
+        this.toDisabled = false;
+        this.fromDisabled = false;
+      } else {
+        this.toDisabled = true;
+        this.fromDisabled = true;
+      }
+    });
+    this.checkUrlQuery();
+    this.getDefaults();
+  }
+
+  getDefaults() {
+    this.setDefaultService.defaults.subscribe((data:any)=>{
+      this.From?.setValue(data.currency1)
+      this.To?.setValue(data.currency2)
+
+    })
+  }
+
+  checkUrlQuery() {
+    this.activatedRoute.queryParams.subscribe((param: Params) => {
+      param['chart']
+        ? (this.inDetailesMode = true)
+        : (this.inDetailesMode = false);
+      param['chart'] ? (this.fromDisabled = true) : (this.fromDisabled = false);
     });
   }
 
   navigateToDetailes() {
-    this.router.navigate(['/detailes']);
+    this.router.navigate(['/detailes'], {
+      queryParams: { chart: this.From?.value },
+    });
   }
 
   getCurreciesDropDown() {
@@ -78,8 +110,9 @@ export class PanelComponent implements OnInit {
       return el.name === this.From?.value;
     });
     this.convertedFromUnit = returnedFromValue.name;
-    this.selectedCurrenyService.setCurrency( returnedFromValue.value * this.Amount?.value)
-
+    this.selectedCurrenyService.setCurrency(
+      returnedFromValue.value * this.Amount?.value
+    );
     return returnedFromValue.value;
   }
 
