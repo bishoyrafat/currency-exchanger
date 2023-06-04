@@ -86,7 +86,7 @@ export class PanelComponent implements OnInit {
 
   navigateToDetailes() {
     this.router.navigate(['/detailes'], {
-      queryParams: { chart: this.From?.value },
+      queryParams: { chart: this.From?.value },fragment:this.To?.value
     });
   }
 
@@ -113,6 +113,7 @@ export class PanelComponent implements OnInit {
     this.selectedCurrenyService.setCurrency(
       returnedFromValue.value * this.Amount?.value
     );
+    localStorage.setItem('currencyValue1',returnedFromValue.value)
     return returnedFromValue.value;
   }
 
@@ -121,6 +122,7 @@ export class PanelComponent implements OnInit {
       return el.name === this.To?.value;
     });
     this.convertedToUnit = returnedToValue.name;
+    localStorage.setItem('currencyValue2',returnedToValue.value)
     return returnedToValue.value;
   }
 

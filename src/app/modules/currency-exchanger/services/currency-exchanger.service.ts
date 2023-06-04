@@ -11,7 +11,7 @@ export class CurrencyExchangerService {
 
 
   baseUrl = environment.baseUrl;
-  accessToken = 'ae4fbfa6b3443733a4d0c17d468ace8b';
+  accessToken = '26b305fe4ff6527aa02301a53ac6a575';
   constructor(private http: HttpClient) {}
 
   getCurreciesDropDown() {

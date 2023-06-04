@@ -1,8 +1,6 @@
 @import '/src/styles/abstract/_variables';
-section{
-padding: 20rem 0;
-  background-color: $color-dark-blue;
-  color: $color-light-grey;
+.chart{
+padding: 2rem 0;
   margin: 0 4rem;
   border-radius: 5px;
 }

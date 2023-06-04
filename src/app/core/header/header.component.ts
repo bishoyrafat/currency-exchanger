@@ -15,7 +15,7 @@ export class HeaderComponent {
 
   goToDetailes(currency1: string, currency2: string) {
     this.router.navigate(['/detailes'], {
-      queryParams: { chart: currency1 },
+      queryParams: { chart: currency1 },fragment:currency2
     });
     this.setDefaultService.setDefaults({ currency1, currency2 });
   }

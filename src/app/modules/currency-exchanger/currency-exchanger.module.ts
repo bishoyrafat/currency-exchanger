@@ -10,6 +10,7 @@ import { ChartComponent } from './components/chart/chart.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NavTitleComponent } from './components/nav-title/nav-title.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 
 
@@ -29,7 +30,8 @@ import { NavTitleComponent } from './components/nav-title/nav-title.component';
     CoreModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,NgApexchartsModule
+
   ]
 })
 export class CurrencyExchangerModule { }

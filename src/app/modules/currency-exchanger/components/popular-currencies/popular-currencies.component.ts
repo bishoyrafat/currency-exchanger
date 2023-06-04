@@ -24,6 +24,8 @@ export class PopularCurrenciesComponent implements OnInit {
   }
 
   filterData() {
+    this.mappedArray=[]
+
     this.popularCurrenciesService
       .getCurrency()
       .subscribe((data: any) => {
@@ -41,6 +43,7 @@ export class PopularCurrenciesComponent implements OnInit {
           );
         });
       });
+
   }
 
   mapDataToFinalView() {
@@ -48,7 +51,7 @@ export class PopularCurrenciesComponent implements OnInit {
       this.isSubscriped$=i
       this.mappedArray = this.favouriteCurreencies.map((el: any) => {
         return { name: el.name, value: el.value / i };
-      });
+      }).slice(0, 9);
     });
   }
 }
