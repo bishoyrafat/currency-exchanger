@@ -6,16 +6,16 @@
 }
 li {
   list-style: none;
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
+}
+a {
+  text-decoration: none;
+  color: inherit;
 }
 html {
   font-size: 62.5%;
 }
 
-body{
-  font-family: 'Lato', sans-serif;
+body {
+  font-family: "Lato", sans-serif;
   background-color: $color-light-grey;
 }

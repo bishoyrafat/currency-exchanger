@@ -1,4 +1,4 @@
-const currencyList: { name: string; code: string }[] = [
+export const currencyList: { name: string; code: string }[] = [
   { name: 'Afghan Afghani', code: 'AFA' },
   { name: 'Albanian Lek', code: 'ALL' },
   { name: 'Algerian Dinar', code: 'DZD' },
@@ -51,7 +51,7 @@ const currencyList: { name: string; code: string }[] = [
   { name: 'Eritrean Nakfa', code: 'ERN' },
   { name: 'Estonian Kroon', code: 'EEK' },
   { name: 'Ethiopian Birr', code: 'ETB' },
-  { name: 'Euro', code: 'EUR' },
+  { name: 'European Union Euro', code: 'EUR' },
   { name: 'Falkland Islands Pound', code: 'FKP' },
   { name: 'Fijian Dollar', code: 'FJD' },
   { name: 'Gambian Dalasi', code: 'GMD' },

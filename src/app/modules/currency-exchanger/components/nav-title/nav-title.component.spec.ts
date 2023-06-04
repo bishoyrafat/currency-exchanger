@@ -1,0 +1,23 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { NavTitleComponent } from './nav-title.component';
+
+describe('NavTitleComponent', () => {
+  let component: NavTitleComponent;
+  let fixture: ComponentFixture<NavTitleComponent>;
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [ NavTitleComponent ]
+    })
+    .compileComponents();
+
+    fixture = TestBed.createComponent(NavTitleComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});
