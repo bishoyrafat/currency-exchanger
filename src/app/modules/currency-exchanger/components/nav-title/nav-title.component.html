@@ -1,0 +1,10 @@
+<ng-container *ngIf="!inDetailesMode">
+  <h2 class="currency-title">Currency Exchanger</h2>
+</ng-container>
+
+<ng-container *ngIf="inDetailesMode">
+  <nav class="title flex justify-between align-center">
+    <h2 class="title__name">{{currencyName?.code}} - <i>{{currencyName?.name}}</i> </h2>
+    <a class="title__button" (click)="backToHome()" >Back to Home</a>
+  </nav>
+</ng-container>

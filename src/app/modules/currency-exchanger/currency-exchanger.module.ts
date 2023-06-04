@@ -9,6 +9,7 @@ import { PanelComponent } from './components/panel/panel.component';
 import { ChartComponent } from './components/chart/chart.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NavTitleComponent } from './components/nav-title/nav-title.component';
 
 
 
@@ -19,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     DetailesPageComponent,
     PanelComponent,
     PopularCurrenciesComponent,
-    ChartComponent
+    ChartComponent,
+    NavTitleComponent
   ],
   imports: [
     CommonModule,

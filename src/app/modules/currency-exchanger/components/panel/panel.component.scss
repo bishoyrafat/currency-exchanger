@@ -21,7 +21,7 @@ button[disabled] {
 }
 .panel {
   font-size: 1.6rem;
-  margin: 2rem 4rem;
+  margin: 0.9rem 4rem;
   border: 3px solid $color-dark-blue;
   border-radius: 5px;
   padding: 2rem;
@@ -46,8 +46,9 @@ button[disabled] {
   }
 
   &__detailes {
+    margin-top: 1rem;
+
     & .button--secondary {
-      margin-top: 1rem;
       cursor: pointer;
       background-color: $color-dark-blue;
       color: $color-light-grey;
@@ -70,6 +71,3 @@ button[disabled] {
   }
 }
 
-.currency-title {
-  margin: 1rem;
-}
