@@ -36,22 +36,20 @@ export class ChartComponent implements OnInit {
   setCurrencies() {
     this.cuureny1 = <string>this.activatedRoute.snapshot.queryParams['chart'];
     this.cuureny2 = <string>this.activatedRoute.snapshot.fragment;
+        // window.location.reload()
+
   }
 
   getDefaults() {
-    this.setDefaultService.defaults.subscribe((el: any) => {
-      this.cuureny1 = el.currency1;
-      this.cuureny2 = el.currency2;
-    });
+    this.cuureny1Rate = Number(localStorage.getItem('currencyValue1'));
+    this.cuureny2Rate = Number(localStorage.getItem('currencyValue2'));
+
     this.chartImlementation(
       this.cuureny1,
       this.cuureny2,
-      this.getRndInteger(this.cuureny1Rate - 2, this.cuureny1Rate + 2),
-      this.getRndInteger(this.cuureny2Rate - 2, this.cuureny2Rate + 2)
+      this.getRndInteger(+this.cuureny1Rate - 2, +this.cuureny1Rate + 2),
+      this.getRndInteger(+this.cuureny2Rate - 2, +this.cuureny2Rate + 2)
     );
-
-    this.cuureny1Rate = Number(localStorage.getItem('currencyValue1'));
-    this.cuureny2Rate = Number(localStorage.getItem('currencyValue2'));
   }
 
   getRndInteger(min: number, max: number) {

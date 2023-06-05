@@ -21,6 +21,10 @@ export class HeaderComponent {
       queryParams: { chart: currency1 },fragment:currency2
     });
     this.setDefaultService.setDefaults({ currency1, currency2 });
+    setTimeout(() => {
+      window.location.reload()
+
+    }, 100);
   }
 
   goHome() {
