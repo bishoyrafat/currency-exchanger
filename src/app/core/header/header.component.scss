@@ -1,14 +1,21 @@
 @import "/src/styles/abstract/_variables";
-.header{
-
+.header {
   margin: 0.1rem 1rem;
   font-size: 1.6rem;
   border-radius: 5px;
   background-color: $color-dark-blue;
   padding: 1rem 2rem;
   color: $color-light-grey;
+  &__box {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    img,span{
+          cursor: pointer;
+    }
+  }
 
-  &__menu{
+  &__menu {
     gap: 1rem;
   }
   &-item {
@@ -19,11 +26,23 @@
     cursor: pointer;
     transform: all 0.3s;
 
-    &:hover{
+    &:hover {
       transform: translateY(-2px);
-      background-color: $color-light-grey ;
-      color:$color-dark-blue ;
+      background-color: $color-light-grey;
+      color: $color-dark-blue;
     }
-
+  }
+}
+@media (max-width: 768px) {
+  .header {
+    display: grid;
+    gap: 1rem;
+    &__menu {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    &__nav {
+      justify-content: center;
+    }
   }
 }
