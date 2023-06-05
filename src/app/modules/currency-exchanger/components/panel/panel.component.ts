@@ -79,14 +79,17 @@ export class PanelComponent implements OnInit {
 
   checkUrlQuery() {
     this.activatedRoute.queryParams.subscribe((param: Params) => {
-      param['chart']
-        ? (this.inDetailesMode = true)
-        : (this.inDetailesMode = false);
-      param['chart'] ? (this.fromDisabled = true) : (this.fromDisabled = false);
+      if( param['chart']) {
+        (this.inDetailesMode = true);
+        (this.fromDisabled = true);
+      } else {
+        (this.inDetailesMode = false);
+      }
     });
   }
 
   navigateToDetailes() {
+    this.loadingService.load()
     this.router.navigate(['/detailes'], {
       queryParams: { chart: this.From?.value },fragment:this.To?.value
     });
@@ -135,6 +138,8 @@ export class PanelComponent implements OnInit {
   }
 
   swapCurrencies() {
+    this.loadingService.load()
+
     let fromControl = this.From?.value;
     let toControl = this.To?.value;
 

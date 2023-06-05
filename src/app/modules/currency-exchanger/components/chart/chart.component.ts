@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { SetDefaultService } from 'src/app/shared/services/set-default.service';
 
 export type ChartOptions = {
   series: any;
@@ -16,7 +17,7 @@ export type ChartOptions = {
   styleUrls: ['./chart.component.scss'],
 })
 export class ChartComponent implements OnInit {
-  @ViewChild('chart') chart: any;
+  @ViewChild('chart') chart!: HTMLElement;
   public chartOptions!: Partial<ChartOptions>;
   cuureny1!: string;
   cuureny2!: string;
@@ -25,10 +26,11 @@ export class ChartComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
+    private setDefaultService: SetDefaultService
   ) {}
   ngOnInit(): void {
     this.setCurrencies();
-    this.getDeafults();
+    this.getDefaults();
   }
 
   setCurrencies() {
@@ -36,21 +38,28 @@ export class ChartComponent implements OnInit {
     this.cuureny2 = <string>this.activatedRoute.snapshot.fragment;
   }
 
-  getDeafults() {
-    this.cuureny1Rate = Number(localStorage.getItem('currencyValue1'));
-    this.cuureny2Rate = Number(localStorage.getItem('currencyValue2'));
-
+  getDefaults() {
+    this.setDefaultService.defaults.subscribe((el: any) => {
+      this.cuureny1 = el.currency1;
+      this.cuureny2 = el.currency2;
+    });
     this.chartImlementation(
       this.cuureny1,
       this.cuureny2,
       this.getRndInteger(this.cuureny1Rate - 2, this.cuureny1Rate + 2),
       this.getRndInteger(this.cuureny2Rate - 2, this.cuureny2Rate + 2)
     );
+
+    this.cuureny1Rate = Number(localStorage.getItem('currencyValue1'));
+    this.cuureny2Rate = Number(localStorage.getItem('currencyValue2'));
   }
+
   getRndInteger(min: number, max: number) {
     return Array.from(
       { length: 12 },
-      () => Math.floor(Math.random() * (+max.toFixed(2) - +min.toFixed(2))) + min.toFixed(2)
+      () =>
+        Math.floor(Math.random() * (+max.toFixed(2) - +min.toFixed(2))) +
+        min.toFixed(2)
     );
   }
 
@@ -85,7 +94,7 @@ export class ChartComponent implements OnInit {
       },
       grid: {
         row: {
-          colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
+          colors: ['#f3f3f3', 'transparent'],
           opacity: 0.5,
         },
       },
