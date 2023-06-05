@@ -1,0 +1,17 @@
+.grid{
+  display: grid;
+}
+
+.col-1-of-3{
+  grid-template-columns: 1fr 2fr;
+}
+
+.col-2-of-3{
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+
+.col-3x3{
+grid-template-columns: 1fr 1fr 1fr;
+grid-template-rows:  1fr 1fr 1fr;
+}

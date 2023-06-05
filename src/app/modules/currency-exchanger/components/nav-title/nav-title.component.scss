@@ -1,0 +1,22 @@
+@import "/src/styles/abstract/_variables";
+
+
+.currency-title {
+  padding: 0 4rem;
+  margin-top: 1rem;}
+
+.title{
+  padding: 0 4rem;
+  margin-top: 1rem;
+  &__name{
+  }
+  &__button{
+    cursor: pointer;
+    background-color: $color-dark-orange;
+    color: $color-light-grey;
+    padding: 0.9rem 3rem;
+    border-radius: 5px;
+    font-size: 1.2rem;
+  }
+
+}

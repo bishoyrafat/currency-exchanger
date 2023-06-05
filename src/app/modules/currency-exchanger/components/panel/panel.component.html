@@ -1,0 +1,48 @@
+<app-nav-title (getData)="getCurreciesDropDown()" ></app-nav-title>
+<form [formGroup]="panelForm">
+<section class="panel">
+  <div class="input__box grid col-1-of-3">
+    <div class="panel__input">
+      <label for="amount">Amount</label>
+      <input type="number" id="amount" formControlName="amount" min="1"/>
+    </div>
+    <div class="panel__select grid col-2-of-3">
+      <div class="panel__select--from">
+        <label for="from">From</label>
+        <select formControlName="from"  (change)="fromValue()" >
+          <option [disabled]="fromDisabled" *ngFor="let currency of formattedBody" [value]="currency.name">{{currency.name }}</option>
+        </select>
+      </div>
+      <img
+        class="panel-image"
+        src="../../../../../assets/images/pngwing.com.png"
+        alt=""
+        (click)="fromDisabled ? '': swapCurrencies()"
+      />
+      <div class="panel__select--to">
+        <label for="to">To</label>
+        <select formControlName="to"  (change)="toValue()" >
+            <option [disabled]="toDisabled" *ngFor="let currency of formattedBody" [value]="currency.name">
+              {{currency.name}}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel__convert grid col-1-of-3">
+    <div></div>
+    <button class="panel--button" [disabled]="toDisabled" (click)="convert()">Convert</button>
+  </div>
+
+  <div class="panel__detailes grid col-2-of-3 align-center">
+    <div>{{panelForm.get('amount')?.value ?panelForm.get('amount')?.value:'XX.XX'}} {{convertedFromUnit ?convertedFromUnit :"EUR"}} = {{convertedValue?(convertedValue | number:'1.1-2'):'XX.XX'}} {{panelForm.get('to')?.value ?panelForm.get('to')?.value :'XX'}}</div>
+    <div>{{convertedValue?(convertedValue | number:'1.1-2'):'XX.XX'}} {{convertedToUnit ?(convertedToUnit) :'XX'}} </div>
+    <button *ngIf="!inDetailesMode" class="button--secondary" [disabled]="toDisabled" (click)="navigateToDetailes()">More Detailes</button>
+  </div>
+</section>
+</form>
+
+
+
+

@@ -1,0 +1,107 @@
+@import "/src/styles/abstract/_variables";
+label {
+  display: block;
+}
+select {
+  width: 100%;
+  height: 3rem;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+}
+input {
+  width:70%;
+  height: 3rem;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+}
+button[disabled] {
+  background-color: rgba(0, 0, 0, 0.058) !important;
+  color: rgb($color-dark-blue, 0.3) !important;
+  border: none;
+}
+.panel {
+  font-size: 1.6rem;
+  margin: 0.9rem 4rem;
+  border: 3px solid $color-dark-blue;
+  border-radius: 5px;
+  padding: 2rem;
+  &-image {
+    width: 20%;
+    height: 73%;
+    align-self: end;
+    justify-self: center;
+    cursor: pointer;
+  }
+  &--button {
+    margin-top: 1rem;
+    padding: 0.9rem 0;
+    border-radius: 5px;
+    background-color: $color-dark-orange;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: $color-light-orange;
+    }
+  }
+
+  &__detailes {
+    margin-top: 1rem;
+
+    & .button--secondary {
+      cursor: pointer;
+      background-color: $color-dark-blue;
+      color: $color-light-grey;
+      padding: 0.9rem 0;
+      border-radius: 5px;
+
+      &:hover {
+        background-color: $color-light-grey;
+        color: $color-dark-blue;
+      }
+    }
+
+    div {
+      font-size: 1.4rem;
+      border: 2px solid $color-dark-blue;
+      padding: 0.3rem 0.9rem;
+      width: fit-content;
+      border-radius: 5px;
+    }
+  }
+}
+
+
+@media (max-width: 768px) {
+  input{
+    width: 100%;
+  }
+  .input__box{
+    grid-template-columns: auto;
+    grid-template-rows: repeat(4, auto);
+  }
+.panel{
+  &-image{
+    width: 8%;
+  }
+  &__select{
+    grid-template-columns: auto;
+    grid-template-rows: repeat(3, auto);
+  }
+  &__convert{
+    grid-template-columns: 1fr;
+  }
+  &__detailes{
+    grid-template-columns: auto;
+    grid-template-rows: repeat(3, auto);
+    gap: 2rem;
+    justify-content: center;
+    div{
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
+
+ }

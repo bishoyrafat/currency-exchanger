@@ -1,0 +1,32 @@
+@import "/src/styles/abstract/_variables";
+.popular {
+  gap: $gutter-horizontal;
+  font-size: 1.6rem;
+  margin: 2rem 4rem;
+  padding: 3rem 0;
+  background-color: $color-dark-blue;
+  color:$color-light-grey ;
+  border-radius: 5px;
+  & div {
+    border: 2px solid $color-light-grey;
+    width: 30rem;
+    height: 10rem;
+    border-radius: 5px;
+
+  }
+}
+@media (max-width: 1111px) {
+  .popular{
+    grid-template-columns: auto auto;
+
+  }
+
+  @media (max-width: 768px) {
+    .popular{
+      grid-template-columns: auto;
+
+    }
+  }
+
+
+}

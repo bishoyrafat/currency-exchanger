@@ -1,0 +1,4 @@
+
+<section *ngIf="isSubscriped$"  class="popular grid col-3x3 justify-center align-center">
+  <div *ngFor="let item of mappedArray" class="flex justify-content-center align-center ">{{item.value | number:'1.1-2'}} {{item.name}}</div>
+</section>
