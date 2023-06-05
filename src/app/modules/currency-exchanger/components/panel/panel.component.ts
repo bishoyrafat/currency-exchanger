@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { LoadingService } from 'src/app/core/services/loading.service';
 import { Icurruncies } from 'src/app/shared/models/currencies';
 import { PopularCurrenciesService } from 'src/app/shared/services/popular-currencies.service';
 import { SelectedCurrenyService } from 'src/app/shared/services/selected-curreny.service';
@@ -30,7 +31,8 @@ export class PanelComponent implements OnInit {
     private currencyExchangerService: CurrencyExchangerService,
     private popularCurrenciesService: PopularCurrenciesService,
     private selectedCurrenyService: SelectedCurrenyService,
-    private setDefaultService: SetDefaultService
+    private setDefaultService: SetDefaultService,
+    private loadingService: LoadingService,
   ) {}
 
   createForm() {
@@ -121,12 +123,13 @@ export class PanelComponent implements OnInit {
     let returnedToValue = this.formattedBody.find((el: any) => {
       return el.name === this.To?.value;
     });
-    this.convertedToUnit = returnedToValue.name;
+    this.convertedToUnit = returnedToValue?.name;
     localStorage.setItem('currencyValue2',returnedToValue.value)
     return returnedToValue.value;
   }
 
   convert() {
+    this.loadingService.load()
     this.convertedValue =
       (this.toValue() / this.fromValue()) * this.Amount?.value;
   }
