@@ -37,7 +37,7 @@
 
   <div class="panel__detailes grid col-2-of-3 align-center">
     <div>{{panelForm.get('amount')?.value ?panelForm.get('amount')?.value:'XX.XX'}} {{convertedFromUnit ?convertedFromUnit :"EUR"}} = {{convertedValue?(convertedValue | number:'1.1-2'):'XX.XX'}} {{panelForm.get('to')?.value ?panelForm.get('to')?.value :'XX'}}</div>
-    <div>{{convertedValue?(convertedValue | number:'1.1-2'):'XX.XX'}} {{convertedToUnit ?(convertedToUnit) :'XX'}} </div>
+    <div>{{convertedValue?(convertedValue | number:'1.1-2'):'XX.XX'}} {{convertedToUnit ?(convertedToUnit) :'USD'}} </div>
     <button *ngIf="!inDetailesMode" class="button--secondary" [disabled]="toDisabled" (click)="navigateToDetailes()">More Detailes</button>
   </div>
 </section>

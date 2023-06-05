@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { SetDefaultService } from 'src/app/shared/services/set-default.service';
 
 export type ChartOptions = {
   series: any;
@@ -19,14 +18,13 @@ export type ChartOptions = {
 export class ChartComponent implements OnInit {
   @ViewChild('chart') chart: any;
   public chartOptions!: Partial<ChartOptions>;
-  cuureny1!: any;
-  cuureny2!: any;
-  cuureny1Rate!: any;
-  cuureny2Rate!: any;
+  cuureny1!: string;
+  cuureny2!: string;
+  cuureny1Rate!: number;
+  cuureny2Rate!: number;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private setDefaultService: SetDefaultService
   ) {}
   ngOnInit(): void {
     this.setCurrencies();
@@ -34,14 +32,13 @@ export class ChartComponent implements OnInit {
   }
 
   setCurrencies() {
-    this.cuureny1 = <Params>this.activatedRoute.snapshot.queryParams['chart'];
-    this.cuureny2 = <any>this.activatedRoute.snapshot.fragment;
+    this.cuureny1 = <string>this.activatedRoute.snapshot.queryParams['chart'];
+    this.cuureny2 = <string>this.activatedRoute.snapshot.fragment;
   }
 
-  data1: any;
   getDeafults() {
-    this.cuureny1Rate = Number(localStorage.getItem('currencyValue1'))?.toFixed(2);
-    this.cuureny2Rate = Number(localStorage.getItem('currencyValue2'))?.toFixed(2);
+    this.cuureny1Rate = Number(localStorage.getItem('currencyValue1'));
+    this.cuureny2Rate = Number(localStorage.getItem('currencyValue2'));
 
     this.chartImlementation(
       this.cuureny1,
@@ -53,11 +50,11 @@ export class ChartComponent implements OnInit {
   getRndInteger(min: number, max: number) {
     return Array.from(
       { length: 12 },
-      () => Math.floor(Math.random() * (max - min)) + min
+      () => Math.floor(Math.random() * (+max.toFixed(2) - +min.toFixed(2))) + min.toFixed(2)
     );
   }
 
-  chartImlementation(c1: string, c2: string, data1: any, data2: any) {
+  chartImlementation(c1: string, c2: string, data1: string[], data2: string[]) {
     this.chartOptions = {
       series: [
         {
