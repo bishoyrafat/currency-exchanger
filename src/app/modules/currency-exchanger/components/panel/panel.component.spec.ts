@@ -17,7 +17,7 @@ describe('PanelComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should return true', () => {
+    expect(component.panelForm.get('to')?.value).toBeTrue();
   });
 });
