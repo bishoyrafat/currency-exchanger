@@ -29,7 +29,7 @@ export class PopularCurrenciesComponent implements OnInit {
     this.popularCurrenciesService
       .getCurrency()
       .subscribe((data: any) => {
-        this.favouriteCurreencies = data.filter((el: any) => {
+        this.favouriteCurreencies = data.filter((el: {name:string,value:number}) => {
           return (
             el.name == 'USD' ||
             el.name == 'EUR' ||
@@ -49,8 +49,8 @@ export class PopularCurrenciesComponent implements OnInit {
   mapDataToFinalView() {
     this.selectedCurrenyService.getCurrency().subscribe((i: any) => {
       this.isSubscriped$=i
-      this.mappedArray = this.favouriteCurreencies.map((el: any) => {
-        return { name: el.name, value: el.value / i };
+      this.mappedArray = this.favouriteCurreencies.map((el: {name:string,value:number}) => {
+        return { name: el.name, value: el.value * i };
       }).slice(0, 9);
     });
   }

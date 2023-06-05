@@ -11,6 +11,6 @@ describe('CurrencyExchangerService', () => {
   });
 
   it('should be created', () => {
-    expect(service).toBeTruthy();
+    expect(service.accessToken).toBeTrue();
   });
 });
